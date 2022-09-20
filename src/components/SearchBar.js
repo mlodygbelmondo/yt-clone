@@ -12,7 +12,7 @@ const SearchBar = () => {
         e.preventDefault()
 
         if (searchTerm) {
-            navigate(`/search/${searchTerm}`)
+            navigate(`/yt-clone/search/${searchTerm}`)
 
             setSearchTerm('')
         }
