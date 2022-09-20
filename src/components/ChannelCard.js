@@ -3,11 +3,16 @@ import { Typography, Box, CardContent, CardMedia } from "@mui/material"
 import { CheckCircle } from "@mui/icons-material"
 import { demoProfilePicture } from "../utils/constants"
 
-const ChannelCard = ({ channelDetail, marginTop }) => (
-    <Box
+const ChannelCard = ({ channelDetail, marginTop }) => {
+    if (!channelDetail?.snippet) return 'Loading...'
+
+    console.log(channelDetail)
+
+    return (
+        <Box
         sx={{boxShadow: 'none', borderRadius: 20, display:'flex', justifyContent:'center', alignItems:'center', width: {xs: 356, md: 320}, margin:'auto', marginTop}}    
     >
-        <Link to={`/yt-clone/channel/${channelDetail?.id?.channelId}`}>
+        <Link to={`/yt-clone/channel/${channelDetail?.id}`}>
             <CardContent sx={{display: 'flex', flexDirection:'column', justifyContent:'center', textAlign:'center', color:'#fff'}}>
                 <CardMedia 
                     image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
@@ -26,7 +31,10 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
             </CardContent>
         </Link>
     </Box>
-  )
+    )
+}
+
+
 
 
 export default ChannelCard

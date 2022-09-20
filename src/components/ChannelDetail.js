@@ -16,6 +16,8 @@ const ChannelDetail = () => {
       .then(data => setVideos(data?.items))
   }, [id])
 
+  if (!channelDetail?.snippet) return 'Loading...'
+
   return (
     <Box minHeight='95vh'>
       <Box>
